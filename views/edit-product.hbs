@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <title>Edit Product</title>
+</head>
+<body>
+  <div class="container mt-5">
+    <h1>Edit Product</h1>
+    
+    <form action="/products/edit-product/{{product._id}}" method="POST" >
+      <div class="mb-3">
+        <label for="title" class="form-label">Product Title</label>
+        
+        <input type="text" class="form-control" id="title" name="title" value="{{product.title}}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price (USD)</label>
+        <input type="number" class="form-control" id="price" name="price" value="{{product.price}}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="image01" class="form-label">Image 01 URL</label>
+        <input type="text" class="form-control" id="image01" name="image01" value="{{product.image01}}" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="image02" class="form-label">Image 02 URL</label>
+        <input type="text" class="form-control" id="image02" name="image02" value="{{product.image02}}" required>
+      </div>
+
+       <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea class="form-control" id="description" name="description" required>{{product.description}}</textarea>
+      </div>
+
+     <div class="mb-3">
+        <label for="categorySlug" class="form-label">Category</label>
+        <select class="form-select" id="categorySlug" name="categorySlug" required>
+        <option value="">Select a category</option>
+        {{#each categories}}
+            <option value="{{this._id}}" {{#if isSelected}}selected{{/if}}>{{this.display}}</option>
+        {{/each}}
+    </select>
+      </div>
+
+      <!-- Colors -->
+
+
+      <button type="submit" class="btn btn-primary">Update Product</button>
+      <a href="/products" class="btn btn-secondary">Cancel</a>
+    </form>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+  <script>
+document.querySelector('form').addEventListener('submit', function(event) {
+    console.log('Form is being submitted');
+    console.log('Title:', document.getElementById('title').value);
+    console.log('Price:', document.getElementById('price').value);
+    // Thêm log cho các trường khác nếu cần
+});
+</script>
+</body>
+</html>

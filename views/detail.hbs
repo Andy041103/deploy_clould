@@ -1,0 +1,14 @@
+ <div class="container">
+      <div class="row">
+         <div class="col">
+            <img src="{{ products.image01}}" width="400" height="450">
+         </div>
+         <div class="col">
+            <h1 class="text text-danger">Toy Detail</h1>
+            <h3>Trade Mark: {{ products.categorySlug.display }}</h3>
+            <h3>Toy Name: {{ products.title }}</h3>
+            <h3>Price: ${{  products.price }}</h3>
+            <h3>description: {{  products.description }}</h3>
+         </div>
+      </div>
+   </div>
